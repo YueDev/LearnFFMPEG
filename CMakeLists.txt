@@ -3,7 +3,10 @@ project(LearnFFMPEG)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(${PROJECT_SOURCE_DIR}/ffmpeg/include)
+include_directories(
+        ${PROJECT_SOURCE_DIR}/ffmpeg/include
+        ${PROJECT_SOURCE_DIR}/include
+)
 link_directories(${PROJECT_SOURCE_DIR}/ffmpeg/lib)
 
 add_executable(LearnFFMPEG main.cpp)
@@ -18,4 +21,4 @@ target_link_libraries(
         postproc
         swresample
         swscale
-        )
+)
