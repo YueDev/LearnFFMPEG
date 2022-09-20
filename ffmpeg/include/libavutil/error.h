@@ -113,13 +113,10 @@ static inline char *av_make_error_string(char *errbuf, size_t errbuf_size, int e
     av_strerror(errnum, errbuf, errbuf_size);
     return errbuf;
 }
-
-/**
- * Convenience macro, the return value should be used only directly in
- * function arguments but never stand-alone.
- */
+//origin: av_make_error_string((char[AV_ERROR_MAX_STRING_SIZE]){0}, AV_ERROR_MAX_STRING_SIZE, errnum)
+// c++ can not build. change it to : (char*)__builtin_alloca(AV_ERROR_MAX_STRING_SIZE)
 #define av_err2str(errnum) \
-    av_make_error_string((char[AV_ERROR_MAX_STRING_SIZE]){0}, AV_ERROR_MAX_STRING_SIZE, errnum)
+    av_make_error_string((char*)__builtin_alloca(AV_ERROR_MAX_STRING_SIZE), AV_ERROR_MAX_STRING_SIZE, errnum)
 
 /**
  * @}
